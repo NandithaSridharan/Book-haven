@@ -20,9 +20,37 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["user", "admin"],
-      default: "user"
+      enum: ["reader", "admin"],
+      default: "reader"
     },
+    bio: {
+      type: String,
+      default: ""
+    },
+
+    profileImage: {
+      type: String,
+      default: ""
+    },
+    interests: {
+      type: [String], // genres
+      default: []
+    },
+
+    wishlist: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Book" }
+    ],
+
+    readingHistory: [
+      {
+        book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+        status: {
+          type: String,
+          enum: ["reading", "completed"],
+        },
+        completedAt: Date
+      }
+    ],
     interests: {
       type: [String],
       default: []
@@ -39,6 +67,7 @@ const userSchema = new mongoose.Schema(
     }
   },
   { timestamps: true }
+
 );
 
 module.exports = mongoose.model("User", userSchema);
