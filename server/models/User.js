@@ -40,6 +40,36 @@ const userSchema = new mongoose.Schema(
     wishlist: [
       { type: mongoose.Schema.Types.ObjectId, ref: "Book" }
     ],
+    readingStatus: [
+  {
+    book: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Book"
+    },
+    status: {
+      type: String,
+      enum: ["reading", "completed"],
+      required: true
+    },
+    startedAt: {
+      type: Date,
+      default: Date.now
+    },
+    completedAt: Date
+  }
+],
+
+readingGoals: {
+  monthly: {
+    type: Number,
+    default: 0
+  },
+  yearly: {
+    type: Number,
+    default: 0
+  }
+},
+
 
     readingHistory: [
       {
