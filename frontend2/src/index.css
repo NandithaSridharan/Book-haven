@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  :root {
+    --background: 30 40% 92%;
+    --foreground: 25 25% 20%;
+    --border: 30 20% 80%;
+    --primary: 28 35% 35%;
+    --secondary: 35 35% 85%;
+    --accent: 20 60% 50%;
+    --card: 30 30% 96%;
+  }
+    
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
